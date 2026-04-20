@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Me — Yangi's Streetwear</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link rel="stylesheet" href="nice.css">
+  <link rel="stylesheet" href="yangiyu.css">
+  <link rel="stylesheet" href="yangi.css">
+  <style>
+
+    /* ================================================
+       ABOUTME PAGE — STREETWEAR RESKIN
+    ================================================ */
+
+    .aboutme-page {
+      padding-top: 56px;
+      min-height: 100vh;
+      background: var(--bg);
+    }
+
+    /* ── PAGE HERO ── */
+    .aboutme-hero {
+      position: relative;
+      background-color: var(--surface);
+      background-image: url("images/spray.png");
+      background-size: cover;
+      background-position: center;
+      min-height: 100vh;
+      display: flex;
+      align-items: flex-end;
+      padding: 0 6vw 8vh;
+      overflow: hidden;
+    }
+
+    .aboutme-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to top,
+        rgba(8,8,8,0.97) 0%,
+        rgba(8,8,8,0.55) 60%,
+        rgba(8,8,8,0.15) 100%
+      );
+      z-index: 0;
+    }
+
+    /* Big ghost number */
+    .aboutme-hero::after {
+      content: '01';
+      position: absolute;
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: clamp(10rem, 30vw, 26rem);
+      color: rgba(240,235,224,0.025);
+      top: 50%;
+      right: 3vw;
+      transform: translateY(-50%);
+      pointer-events: none;
+      line-height: 1;
+      letter-spacing: -0.04em;
+    }
+
+    .aboutme-hero-inner {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      width: 100%;
+      gap: 4rem;
+      flex-wrap: wrap;
+    }
+
+    /* ── Left: text block ── */
+    .hero-text-block {
+      flex: 1;
+      min-width: 260px;
+    }
+
+    .hero-kicker {
+      font-family: var(--font-body);
+      font-size: 0.6rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .hero-kicker::before {
+      content: '';
+      display: inline-block;
+      width: 28px;
+      height: 1px;
+      background: var(--accent);
+    }
+
+    .hero-name {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-style: italic;
+      font-size: clamp(3.5rem, 10vw, 9rem);
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+      line-height: 0.9;
+      color: var(--text);
+    }
+
+    .hero-name .accent-line {
+      color: var(--accent);
+      display: block;
+    }
+
+    .hero-meta {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin-top: 1.5rem;
+    }
+
+    .hero-meta-item {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .hero-meta-label {
+      font-family: var(--font-body);
+      font-size: 0.52rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .hero-meta-value {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text);
+    }
+
+    /* ── Right: About Card ── */
+    .hero-card-wrap {
+      flex-shrink: 0;
+    }
+
+    /* Scroll hint */
+    .hero-scroll-hint {
+      position: absolute;
+      bottom: 2.5rem;
+      right: 4vw;
+      z-index: 1;
+      font-family: var(--font-body);
+      font-size: 0.58rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      writing-mode: vertical-rl;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .hero-scroll-hint::after {
+      content: '';
+      display: block;
+      width: 1px;
+      height: 40px;
+      background: var(--accent);
+      animation: scrollPulse 2s ease-in-out infinite;
+    }
+
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 0.3; transform: scaleY(1); }
+      50%       { opacity: 1;   transform: scaleY(1.3); }
+    }
+
+    /* ── EVENTS SECTION ── */
+    .events-section {
+      background: var(--surface);
+      padding: 7rem 6vw;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 2.5rem;
+    }
+
+    .events-section .section-header {
+      width: 100%;
+      display: flex;
+      align-items: baseline;
+      gap: 1.5rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1.5rem;
+    }
+
+    /* ── ALBUMS SECTION ── */
+    .albums-section {
+      background: var(--bg);
+      padding: 7rem 6vw;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 2.5rem;
+    }
+
+    .albums-section .section-header {
+      width: 100%;
+      display: flex;
+      align-items: baseline;
+      gap: 1.5rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1.5rem;
+    }
+
+    /* Tabs (side layout) */
+    .albums-layout {
+      display: grid;
+      grid-template-columns: 160px 1fr;
+      gap: 2px;
+      background: var(--border);
+      width: 100%;
+    }
+
+    .albums-tabs-col {
+      background: var(--surface);
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+    }
+
+    .albums-tab-btn {
+      font-family: var(--font-body);
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      background: var(--surface);
+      border: none;
+      border-left: 3px solid transparent;
+      padding: 1rem 1.25rem;
+      text-align: left;
+      cursor: pointer;
+      transition: color 0.2s, border-color 0.2s, background 0.2s;
+    }
+
+    .albums-tab-btn:hover {
+      color: var(--text);
+      background: var(--surface-2);
+    }
+
+    .albums-tab-btn.active {
+      color: var(--accent);
+      border-left-color: var(--accent);
+      background: var(--surface-2);
+    }
+
+    .albums-gallery-col {
+      background: var(--bg);
+      padding: 1rem;
+      min-height: 400px;
+    }
+
+    /* Each gallery panel */
+    .gallery-panel {
+      display: none;
+      flex-wrap: wrap;
+      gap: 6px;
+      animation: panelFade 0.35s ease;
+    }
+
+    .gallery-panel.active {
+      display: flex;
+    }
+
+    @keyframes panelFade {
+      from { opacity: 0; transform: translateY(10px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .gallery-panel img {
+      width: calc(33.333% - 4px);
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      filter: grayscale(20%);
+      border: 1px solid var(--border);
+      transition: filter 0.3s, border-color 0.3s, transform 0.3s;
+      cursor: pointer;
+    }
+
+    .gallery-panel img:hover {
+      filter: grayscale(0%);
+      border-color: var(--accent);
+      transform: scale(1.02);
+    }
+
+    /* Responsive */
+    @media (max-width: 700px) {
+      .aboutme-hero-inner { flex-direction: column; }
+      .albums-layout { grid-template-columns: 1fr; }
+      .albums-tabs-col { flex-direction: row; flex-wrap: wrap; }
+      .albums-tab-btn {
+        border-left: none;
+        border-bottom: 3px solid transparent;
+        padding: 0.65rem 1rem;
+      }
+      .albums-tab-btn.active {
+        border-bottom-color: var(--accent);
+      }
+      .gallery-panel img { width: calc(50% - 3px); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══ NAVBAR ══ -->
+  <nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="index.html">Yangi's Streetwear</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon navbar-dark-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html#home">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html#products">Products</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html#business">Business</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html#contact">Contact Us</a></li>
+          <li class="nav-item"><a class="nav-link" href="janlang.html">Learn</a></li>
+          <li class="nav-item"><a class="nav-link" href="aboutme.html">About Me</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ══ MARQUEE BAND ══ -->
+  <div class="marquee-band" style="margin-top:56px;">
+    <div class="marquee-inner">
+      <span>Francis Adrian</span><span>Computer Science</span><span>University of Manila</span>
+      <span>3rd Year Student</span><span>20 Years Old</span><span>Pasig City</span>
+      <span>Francis Adrian</span><span>Computer Science</span><span>University of Manila</span>
+      <span>3rd Year Student</span><span>20 Years Old</span><span>Pasig City</span>
+    </div>
+  </div>
+
+  <div class="aboutme-page" style="padding-top:0;">
+
+    <!-- ══ HERO ══ -->
+    <section class="aboutme-hero">
+      <div class="aboutme-hero-inner">
+
+        <!-- Left text -->
+        <div class="hero-text-block">
+          <p class="hero-kicker">Personal Profile</p>
+          <h1 class="hero-name">
+            Francis
+            <span class="accent-line">Adrian</span>
+          </h1>
+          <div class="hero-meta">
+            <div class="hero-meta-item">
+              <span class="hero-meta-label">Course</span>
+              <span class="hero-meta-value">BS Computer Science</span>
+            </div>
+            <div class="hero-meta-item">
+              <span class="hero-meta-label">Year Level</span>
+              <span class="hero-meta-value">3rd Year</span>
+            </div>
+            <div class="hero-meta-item">
+              <span class="hero-meta-label">Age</span>
+              <span class="hero-meta-value">20 Years Old</span>
+            </div>
+            <div class="hero-meta-item">
+              <span class="hero-meta-label">University</span>
+              <span class="hero-meta-value">Univ. of Manila</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: About Card -->
+        <div class="hero-card-wrap">
+          <div class="card">
+            <div class="img">
+              <img src="images/mehaha.jpg" alt="Francis Adrian">
+            </div>
+            <span>About Me</span>
+            <p class="info">
+              I'm Francis Adrian, an 3rd Year Computer-Science Student in The University of Manila, currently 20 Years old
+            </p>
+            <div class="share">
+              <a href="https://web.facebook.com/yangiyu.809218" target="_blank" title="Facebook">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
+                  <path d="M8 0C3.58 0 0 3.58 0 8c0 3.87 2.834 7.063 6.497 7.877v-5.59H4.689V8h1.808V6.283c0-1.793 1.09-2.772 2.683-2.772.768 0 1.428.057 1.62.082v1.879h-1.111c-.87 0-1.037.413-1.037 1.02V8h2.083l-.272 2.287H8.652v5.59C12.316 15.062 16 11.87 16 8c0-4.42-3.58-8-8-8z"/>
+                </svg>
+              </a>
+              <a href="https://www.instagram.com/uroppppp_yng" target="_blank" title="Instagram">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
+                  <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"/>
+                </svg>
+              </a>
+              <a href="https://www.youtube.com/@Yangiyuu" target="_blank" title="YouTube">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
+                  <path d="M8.051 1.999h.089c.822.003 4.987.033 6.11.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172.883.22 1.402l.01.104.022.26.008.104c.065.914.073 1.77.074 1.957v.075c-.001.194-.01 1.108-.082 2.06l-.008.105-.009.104c-.05.572-.124 1.14-.235 1.558a2.007 2.007 0 0 1-1.415 1.42c-1.144.308-5.31.338-6.137.34l-.117.001c-.93 0-5.348-.009-6.121-.34a2.01 2.01 0 0 1-1.415-1.42c-.12-.457-.196-1.057-.245-1.627l-.013-.145-.008-.104C.033 9.23.024 8.316.024 8.05v-.1c0-.82.008-1.641.074-2.556l.008-.104c.049-.57.124-1.17.245-1.626A2.01 2.01 0 0 1 1.768 2.45c1.144-.308 5.31-.338 6.136-.34l.147-.001zm-2.43 4.043v4.019l3.903-2.01-3.903-2.01z"/>
+                </svg>
+              </a>
+            </div>
+            <a href="https://docs.google.com/document/d/1koqqz5v4h5UDrt5JurYHuyNbThs8QyBJze9CV75qFGQ/edit?tab=t.0#heading=h.x8fm1uorkbaw" target="_blank"><button>Resume</button></a>
+          </div>
+        </div>
+
+      </div>
+      <div class="hero-scroll-hint">Scroll</div>
+    </section>
+
+    <!-- ══ EVENTS SECTION ══ -->
+    <section class="events-section">
+      <div class="section-header">
+        <span class="section-tag">— CS Life</span>
+        <h2 class="section-title">Events</h2>
+      </div>
+
+      <div class="container-carousel" style="width:100%;">
+        <div>
+          <div class="content">
+            <h2>Acquaintance Party</h2>
+            <span>CS Department</span>
+          </div>
+        </div>
+        <div>
+          <div class="content">
+            <h2>CS FieldTrip</h2>
+            <span>Laguna · Tagaytay</span>
+          </div>
+        </div>
+        <div>
+          <div class="content">
+            <h2>CS SportsFest</h2>
+            <span>Sportsfest 2026</span>
+          </div>
+        </div>
+        <div>
+          <div class="content">
+            <h2>CS CleanUp Drive</h2>
+            <span>Community Service</span>
+          </div>
+        </div>
+        <div>
+          <div class="content">
+            <h2>UM Intramurals</h2>
+            <span>University-Wide</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ ALBUMS SECTION ══ -->
+    <section class="albums-section">
+      <div class="section-header">
+        <span class="section-tag">— Personal</span>
+        <h2 class="section-title">Albums</h2>
+      </div>
+
+      <div class="albums-layout">
+
+        <!-- Sidebar tabs -->
+        <div class="albums-tabs-col" id="albumTabNav">
+          <button class="albums-tab-btn active" data-panel="family">Family</button>
+          <button class="albums-tab-btn" data-panel="anime">Anime</button>
+          <button class="albums-tab-btn" data-panel="music">Music</button>
+          <button class="albums-tab-btn" data-panel="games">Games</button>
+          <button class="albums-tab-btn" data-panel="friends">Friends</button>
+        </div>
+
+        <!-- Gallery panels -->
+        <div class="albums-gallery-col">
+
+          <div class="gallery-panel active" id="panel-family">
+            <img src="images/dad.jpg" alt="Dad">
+            <img src="images/mom.jpg" alt="Mom">
+            <img src="images/yeng.jpg" alt="Yeng">
+            <img src="images/tep.jpg" alt="Tep">
+            <img src="images/shy.jpg" alt="Shy">
+          </div>
+
+          <div class="gallery-panel" id="panel-anime">
+            <img src="images/tkyo.jpg" alt="Tokyo Ghoul">
+            <img src="images/akame.jpg" alt="Akame ga Kill">
+            <img src="images/yourname.jpg" alt="Your Name">
+            <img src="images/jjk.jpg" alt="Jujutsu Kaisen">
+            <img src="images/op.jpg" alt="One Piece">
+            <img src="images/deathnote.jpg" alt="Death Note">
+          </div>
+
+          <div class="gallery-panel" id="panel-music">
+            <img src="images/Bruno.png" alt="Bruno Mars">
+            <img src="images/cas.png" alt="Cas">
+            <img src="images/1d.jpg" alt="One Direction">
+            <img src="images/5sos.jpg" alt="5 Seconds of Summer">
+            <img src="images/chaseatlantic.jpg" alt="Chase Atlantic">
+            <img src="images/pierce.jpg" alt="Pierce the Veil">
+            <img src="images/mychemical.jpg" alt="My Chemical Romance">
+            <img src="images/joji.png" alt="Joji">
+            <img src="images/keshi.jpg" alt="Keshi">
+            <img src="images/thevamps.png" alt="The Vamps">
+            <img src="images/Radioheadthebends.png" alt="Radiohead">
+            <img src="images/1975.png" alt="The 1975">
+          </div>
+
+          <div class="gallery-panel" id="panel-games">
+            <img src="images/cod.jpg" alt="Call of Duty">
+            <img src="images/batman.jpg" alt="Batman">
+            <img src="images/residentevil.jpg" alt="Resident Evil">
+            <img src="images/star rail.jpg" alt="Honkai Star Rail">
+            <img src="images/ml.jpg" alt="Mobile Legends">
+            <img src="images/genshin.jpg" alt="Genshin Impact">
+            <img src="images/outlast.jpg" alt="Outlast">
+            <img src="images/lastofus.jpg" alt="The Last of Us">
+            <img src="images/streetfighter.jpg" alt="Street Fighter">
+          </div>
+
+          <div class="gallery-panel" id="panel-friends">
+            <img src="images/yun.jpg" alt="Friend 1">
+            <img src="images/lima.jpg" alt="Friend 2">
+            <img src="images/apat.jpg" alt="Friend 3">
+            <img src="images/anim.jpg" alt="Friend 4">
+            <img src="images/lopet.jpg" alt="Friend 5">
+            <img src="images/tatlo.jpg" alt="Friend 6">
+            <img src="images/alwin.jpg" alt="Alwin">
+            <img src="images/mga.jpg" alt="Alwin">
+            <img src="images/oke.jpg" alt="Alwin">
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </div><!-- end .aboutme-page -->
+
+  <!-- ══ FOOTER ══ -->
+  <footer class="footer">
+    <br>
+    <a class="navbar-brand" href="index.html">Yangi's Streetwear</a>
+    <p class="navbar-brand">E.Mejia St, Bagong Ilog, Pasig City, 1001 Metro Manila</p>
+    <p class="navbar-brand">+639-074424193</p>
+    <p class="navbar-brand">francis.ventura@yangistreet.com</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+  <script>
+    /* ── Album tab switcher ── */
+    document.getElementById('albumTabNav').addEventListener('click', function(e) {
+      var btn = e.target.closest('.albums-tab-btn');
+      if (!btn) return;
+      document.querySelectorAll('.albums-tab-btn').forEach(function(b){ b.classList.remove('active'); });
+      document.querySelectorAll('.gallery-panel').forEach(function(p){ p.classList.remove('active'); });
+      btn.classList.add('active');
+      document.getElementById('panel-' + btn.dataset.panel).classList.add('active');
+    });
+  </script>
+
+</body>
+</html>

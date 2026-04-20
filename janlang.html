@@ -1,0 +1,1952 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Learn — Yangi's Streetwear</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link rel="stylesheet" href="nice.css">
+  <link rel="stylesheet" href="yangiyu.css">
+  <link rel="stylesheet" href="yangi.css">
+  <style>
+    /* ================================================
+       JANLANG — STREETWEAR RESKIN
+       All colours/fonts use nice.css variables
+    ================================================ */
+
+    /* Page wrapper — accounts for fixed navbar */
+    .learn-page {
+      padding-top: 56px;
+      min-height: 100vh;
+      background: var(--bg);
+    }
+
+    /* ── PAGE HERO ── */
+    .learn-hero {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 4rem 6vw 3rem;
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .learn-seal-ring {
+      width: 88px; height: 88px;
+      border-radius: 50%;
+      border: 2px solid var(--accent);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      position: relative;
+      animation: rotateSlow 20s linear infinite;
+    }
+
+    .learn-seal-ring::before {
+      content: '';
+      position: absolute;
+      inset: 5px;
+      border-radius: 50%;
+      border: 1px solid rgba(212,255,0,0.25);
+    }
+
+    .learn-seal-ring img {
+      width: 66px; height: 66px;
+      border-radius: 50%;
+      object-fit: cover;
+      filter: grayscale(20%);
+      animation: rotateSlow 20s linear infinite reverse;
+    }
+
+    @keyframes rotateSlow { to { transform: rotate(360deg); } }
+
+    .learn-hero-text {
+      flex: 1;
+    }
+
+    .learn-hero-kicker {
+      font-family: var(--font-body);
+      font-size: 0.6rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+
+    .learn-hero-title {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      text-transform: uppercase;
+      letter-spacing: -0.01em;
+      line-height: 0.95;
+      color: var(--text);
+    }
+
+    .learn-hero-sub {
+      font-family: var(--font-body);
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-top: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .learn-hero-sub::before {
+      content: '';
+      display: inline-block;
+      width: 28px; height: 1px;
+      background: var(--accent);
+    }
+
+    /* ── TAB NAV ── */
+    .learn-tab-nav-wrapper {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 0 6vw;
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+
+    .learn-tab-nav-wrapper::-webkit-scrollbar { height: 2px; }
+    .learn-tab-nav-wrapper::-webkit-scrollbar-thumb { background: var(--accent); }
+
+    .learn-tab-nav {
+      display: inline-flex;
+      gap: 0;
+    }
+
+    .learn-tab-btn {
+      font-family: var(--font-body);
+      font-size: 0.62rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      padding: 1rem 1.25rem;
+      cursor: pointer;
+      border: none;
+      background: transparent;
+      border-bottom: 2px solid transparent;
+      transition: color 0.2s, border-color 0.2s;
+      margin-bottom: -1px;
+      white-space: nowrap;
+    }
+
+    .learn-tab-btn:hover { color: var(--text); }
+
+    .learn-tab-btn.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    /* ── CONTENT AREA ── */
+    .learn-content {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 3rem 4vw 6rem;
+    }
+
+    .learn-panel { display: none; animation: panelFade 0.35s ease; }
+    .learn-panel.active { display: block; }
+
+    @keyframes panelFade {
+      from { opacity: 0; transform: translateY(14px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── CARDS ── */
+    .ys-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 0;
+      padding: 2.5rem 2rem;
+      margin-bottom: 1rem;
+      transition: border-color 0.25s, box-shadow 0.25s;
+    }
+
+    .ys-card:hover {
+      border-color: var(--border-bright);
+    }
+
+    .ys-card--warm {
+      border-left: 3px solid var(--accent-warm);
+    }
+
+    .ys-card--accent {
+      border-left: 3px solid var(--accent);
+      box-shadow: 4px 4px 0 var(--accent);
+    }
+
+    /* ── SECTION LABEL ── */
+    .ys-label {
+      font-family: var(--font-body);
+      font-size: 0.58rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+      display: block;
+    }
+
+    /* ── TYPOGRAPHY ── */
+    .ys-h2 {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      text-transform: uppercase;
+      letter-spacing: -0.01em;
+      line-height: 1;
+      color: var(--text);
+      margin-bottom: 1rem;
+    }
+
+    .ys-h3 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--text);
+      margin-bottom: 0.75rem;
+    }
+
+    .ys-p {
+      font-family: var(--font-body);
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      line-height: 1.9;
+      margin-bottom: 1rem;
+    }
+
+    .ys-p:last-child { margin-bottom: 0; }
+
+    .ys-accent { color: var(--accent); }
+    .ys-accent-warm { color: var(--accent-warm); }
+
+    /* ── HYMN BLOCK ── */
+    .ys-hymn {
+      background: var(--surface-2);
+      border-left: 3px solid var(--accent);
+      padding: 2rem 2rem 2rem 2.5rem;
+      margin: 1.5rem 0;
+      font-family: var(--font-body);
+      font-style: italic;
+      font-size: 0.7rem;
+      line-height: 2.2;
+      color: var(--text-muted);
+    }
+
+    .ys-hymn-title {
+      font-style: normal;
+      font-size: 0.58rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    /* ── DIVIDER ── */
+    .ys-hr {
+      height: 1px;
+      background: var(--border);
+      border: none;
+      margin: 2rem 0;
+    }
+
+    .ys-hr--accent {
+      background: linear-gradient(90deg, var(--accent), transparent);
+      height: 2px;
+    }
+
+    /* ── TIMELINE ── */
+    .ys-timeline {
+      position: relative;
+      padding-left: 2rem;
+      margin-top: 1rem;
+    }
+
+    .ys-timeline::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 1px;
+      background: linear-gradient(180deg, var(--accent), transparent);
+    }
+
+    .ys-tl-item {
+      position: relative;
+      margin-bottom: 1.5rem;
+    }
+
+    .ys-tl-item::before {
+      content: '';
+      position: absolute;
+      left: -2rem; top: 0.35rem;
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      border: 2px solid var(--bg);
+      box-shadow: 0 0 0 2px rgba(212,255,0,0.3);
+    }
+
+    .ys-tl-year {
+      font-family: var(--font-display);
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-bottom: 2px;
+    }
+
+    /* ── MAP CARD ── */
+    .ys-map-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      margin-bottom: 1rem;
+      overflow: hidden;
+    }
+
+    .ys-map-header {
+      padding: 1.5rem 2rem 1.25rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .ys-map-card iframe {
+      display: block;
+      width: 100%;
+      height: 340px;
+      border: none;
+      filter: grayscale(70%) invert(90%) contrast(0.85);
+      opacity: 0.85;
+    }
+
+    .ys-map-address {
+      font-family: var(--font-body);
+      font-size: 0.62rem;
+      color: var(--text-muted);
+      letter-spacing: 0.06em;
+      margin-top: 0.25rem;
+    }
+
+    /* ── ACE GRID ── */
+    .ys-ace-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1px;
+      background: var(--border);
+      margin-top: 1rem;
+    }
+
+    .ys-ace-card {
+      background: var(--surface);
+      padding: 2.5rem 2rem;
+      transition: background 0.25s;
+    }
+
+    .ys-ace-card:hover { background: var(--surface-2); }
+
+    .ys-ace-letter {
+      font-family: var(--font-display);
+      font-size: 4rem;
+      font-weight: 900;
+      color: var(--accent-warm);
+      line-height: 1;
+      margin-bottom: 0.75rem;
+    }
+
+    .ys-ace-h4 {
+      font-family: var(--font-body);
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+
+    /* ── HERO QUOTE ── */
+    .ys-hero-quote {
+      text-align: center;
+      padding: 3rem 1.5rem;
+    }
+
+    .ys-blockquote {
+      font-family: var(--font-display);
+      font-size: clamp(1.5rem, 3vw, 2.5rem);
+      font-weight: 700;
+      text-transform: uppercase;
+      line-height: 1.1;
+      color: var(--text);
+      max-width: 800px;
+      margin: 0 auto 2rem;
+      letter-spacing: -0.01em;
+    }
+
+    .ys-trilogy {
+      display: flex;
+      justify-content: center;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .ys-trilogy-item { text-align: center; }
+
+    .ys-trilogy-icon {
+      width: 52px; height: 52px;
+      border-radius: 50%;
+      background: rgba(212,255,0,0.08);
+      border: 1px solid var(--border-bright);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 0.6rem;
+      font-size: 22px;
+    }
+
+    .ys-trilogy-label {
+      font-family: var(--font-body);
+      font-size: 0.58rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    /* ── PROFESSORS ── */
+    .ys-prof-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 1px;
+      background: var(--border);
+      margin-top: 1rem;
+    }
+
+    .ys-prof-card {
+      background: var(--surface);
+      padding: 2rem 1.25rem 1.75rem;
+      text-align: center;
+      transition: background 0.25s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .ys-prof-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--accent);
+      opacity: 0;
+      transition: opacity 0.25s;
+    }
+
+    .ys-prof-card:hover { background: var(--surface-2); }
+    .ys-prof-card:hover::before { opacity: 1; }
+
+    .ys-prof-avatar {
+      width: 72px; height: 72px;
+      border-radius: 50%;
+      background: var(--surface-2);
+      border: 2px solid var(--border-bright);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1rem;
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: var(--accent);
+      overflow: hidden;
+      transition: border-color 0.25s;
+    }
+
+    .ys-prof-card:hover .ys-prof-avatar { border-color: var(--accent); }
+
+    .ys-prof-avatar img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      border-radius: 50%;
+      filter: grayscale(20%);
+      transition: filter 0.25s;
+    }
+
+    .ys-prof-card:hover .ys-prof-avatar img { filter: grayscale(0%); }
+
+    .ys-prof-name {
+      font-family: var(--font-display);
+      font-size: 0.9rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+
+    .ys-prof-role {
+      font-family: var(--font-body);
+      font-size: 0.55rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: rgba(212,255,0,0.07);
+      border: 1px solid var(--border-bright);
+      padding: 3px 10px;
+      display: inline-block;
+    }
+
+    /* ── OS CARDS ── */
+    .ys-os-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1px;
+      background: var(--border);
+      margin-top: 1rem;
+      margin-bottom: 1px;
+    }
+
+    .ys-os-card {
+      background: var(--surface);
+      overflow: hidden;
+      transition: background 0.25s;
+    }
+
+    .ys-os-card:hover { background: var(--surface-2); }
+
+    .ys-os-header {
+      padding: 1.75rem 1.75rem 1rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .ys-os-logo {
+      width: 44px; height: 44px;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .ys-os-logo img { width: 32px; height: 32px; object-fit: contain; }
+
+    .ys-os-maker {
+      font-family: var(--font-body);
+      font-size: 0.58rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .ys-os-body { padding: 1.5rem 1.75rem; }
+
+    .ys-version-list {
+      list-style: none;
+      margin-top: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .ys-version-list li {
+      font-family: var(--font-body);
+      font-size: 0.62rem;
+      color: var(--text-muted);
+      padding: 6px 10px;
+      background: var(--surface-2);
+      border-left: 2px solid var(--accent);
+      letter-spacing: 0.05em;
+    }
+
+    /* ── CS EVENTS GALLERY ── */
+    .ys-events-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 6px;
+      margin-top: 1rem;
+    }
+
+    .ys-event-card {
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      border: 1px solid var(--border);
+      aspect-ratio: 16/10;
+    }
+
+    .ys-event-card img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: grayscale(20%);
+      transition: transform 0.45s ease, filter 0.45s ease;
+    }
+
+    .ys-event-card:hover img {
+      transform: scale(1.07);
+      filter: grayscale(0%) brightness(0.45);
+    }
+
+    .ys-event-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(8,8,8,0.8) 0%, transparent 55%);
+      z-index: 1;
+    }
+
+    .ys-event-label {
+      position: absolute;
+      bottom: 12px; left: 0; right: 0;
+      text-align: center;
+      font-family: var(--font-display);
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      z-index: 2;
+      opacity: 0.8;
+      transition: opacity 0.3s, transform 0.3s;
+      transform: translateY(4px);
+    }
+
+    .ys-event-card:hover .ys-event-label {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── ACTIVITIES ── */
+    .ys-activity-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+      margin-bottom: 1.5rem;
+    }
+
+    .ys-activity-pill {
+      font-family: var(--font-body);
+      font-size: 0.58rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      background: transparent;
+      border: 1px solid var(--border);
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .ys-activity-pill:hover {
+      color: var(--text);
+      border-color: var(--border-bright);
+    }
+
+    .ys-activity-pill.active {
+      background: var(--accent);
+      color: var(--bg);
+      border-color: var(--accent);
+    }
+
+    .ys-act-panel { display: none; animation: panelFade 0.3s ease; }
+    .ys-act-panel.active { display: block; }
+
+    .ys-act-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .ys-act-title {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      color: var(--text);
+    }
+
+    .ys-act-badge {
+      font-family: var(--font-body);
+      font-size: 0.55rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: rgba(212,255,0,0.07);
+      border: 1px solid var(--border-bright);
+      padding: 3px 10px;
+    }
+
+    .ys-act-desc {
+      font-family: var(--font-body);
+      font-size: 0.68rem;
+      color: var(--text-muted);
+      line-height: 1.8;
+      margin-bottom: 1.25rem;
+    }
+
+    .ys-act-workspace {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--border);
+      align-items: start;
+    }
+
+    @media (max-width: 700px) { .ys-act-workspace { grid-template-columns: 1fr; } }
+
+    /* ── Code Pane ── */
+    .ys-code-pane {
+      background: #0d1117;
+      border: none;
+      overflow: hidden;
+    }
+
+    .ys-code-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.6rem 1rem;
+      background: rgba(255,255,255,0.04);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .ys-traffic { display: flex; gap: 5px; }
+    .ys-traffic span { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+    .tl-r { background: #FF5F57; }
+    .tl-y { background: #FEBC2E; }
+    .tl-g { background: #28C840; }
+
+    .ys-file-label {
+      font-family: var(--font-body);
+      font-size: 0.58rem;
+      color: rgba(255,255,255,0.35);
+      letter-spacing: 0.05em;
+    }
+
+    .ys-code-body {
+      max-height: 400px;
+      overflow-y: auto;
+      padding: 1.25rem;
+    }
+
+    .ys-code-body::-webkit-scrollbar { width: 2px; }
+    .ys-code-body::-webkit-scrollbar-thumb { background: var(--accent); }
+
+    .ys-code-body pre {
+      font-family: 'JetBrains Mono', 'Fira Code', monospace;
+      font-size: 11.5px;
+      line-height: 1.9;
+      color: #e6edf3;
+      white-space: pre;
+      overflow-x: auto;
+      margin: 0;
+    }
+
+    /* Token colors */
+    .tok-tag  { color: #7ee787; }
+    .tok-attr { color: #79c0ff; }
+    .tok-str  { color: #a5d6ff; }
+    .tok-kw   { color: #ff7b72; }
+    .tok-fn   { color: #d2a8ff; }
+    .tok-num  { color: #f2cc60; }
+    .tok-cmt  { color: #8b949e; font-style: italic; }
+    .tok-prop { color: #79c0ff; }
+    .tok-val  { color: #a5d6ff; }
+    .tok-punct{ color: rgba(255,255,255,0.5); }
+
+    /* ── Demo Pane ── */
+    .ys-demo-pane {
+      background: var(--surface-2);
+      border: none;
+      overflow: hidden;
+    }
+
+    .ys-demo-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 0.6rem 1rem;
+      background: rgba(255,255,255,0.03);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .ys-demo-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 6px var(--accent);
+      animation: pulseG 2s infinite;
+    }
+
+    @keyframes pulseG { 0%,100%{opacity:1} 50%{opacity:0.35} }
+
+    .ys-demo-header span {
+      font-family: var(--font-body);
+      font-size: 0.55rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    /* ── Demo Form inside pane (white bg) ── */
+    .demo-form {
+      padding: 1.25rem;
+      background: #fff;
+      min-height: 200px;
+    }
+
+    .demo-form label { font-size: 13px; color: #555; display: block; margin-top: 8px; }
+
+    .demo-form input[type="text"],
+    .demo-form input[type="number"],
+    .demo-form input[type="password"] {
+      width: 100%;
+      padding: 9px 12px;
+      margin: 5px 0;
+      font-size: 15px;
+      border: 1px solid #ddd;
+      border-radius: 0;
+      box-sizing: border-box;
+      display: block;
+    }
+
+    .demo-form .df-btn {
+      width: 100%;
+      padding: 9px;
+      margin-top: 10px;
+      font-size: 14px;
+      cursor: pointer;
+      background: #080808;
+      color: #d4ff00;
+      border: none;
+      border-radius: 0;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .demo-form .df-btn:hover { background: #d4ff00; color: #080808; }
+    .demo-form .df-btn-sec { background: #333; color: #fff; }
+    .demo-form .df-btn-sec:hover { background: #555; color: #fff; }
+
+    .demo-form .result-box {
+      background: #f0f4ff;
+      border: 1px solid #c0c8f0;
+      border-radius: 0;
+      padding: 10px;
+      margin-top: 10px;
+      font-size: 14px;
+      font-weight: 500;
+      color: #1a1f36;
+      min-height: 38px;
+      display: flex;
+      align-items: center;
+    }
+
+    .demo-form .result-box.err { background: #fff0f0; border-color: #f0c0c0; color: #c0392b; }
+    .demo-form .result-box.ok  { background: #f0fff4; border-color: #c0f0c8; color: #1a7a1a; }
+
+    .demo-form .hw-wrap {
+      background: #080808;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 160px;
+    }
+
+    .demo-form .hw-inner {
+      background: #fff;
+      padding: 30px 40px;
+      text-align: center;
+    }
+
+    .demo-form .hw-inner .df-btn { width: auto; padding: 8px 24px; margin: 0; }
+
+    .demo-form .timer-display {
+      font-size: 3.5rem;
+      font-weight: 700;
+      text-align: center;
+      color: #080808;
+      margin: 10px 0;
+      font-family: monospace;
+    }
+
+    .demo-form .timer-display.running { color: #ff3c00; }
+
+    /* ── Calculator Demo ── */
+    .cal-demo {
+      background: #111;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 24px;
+    }
+
+    .cal-wrap {
+      background: #000;
+      max-width: 380px;
+      width: 100%;
+    }
+
+    .cal-display {
+      background: #1a1a1a;
+      color: #d4ff00;
+      font-size: 2.2rem;
+      text-align: right;
+      padding: 16px 20px;
+      border: none;
+      width: 100%;
+      outline: none;
+      font-family: var(--font-body);
+    }
+
+    .cal-keys {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .cal-btn {
+      background: #222;
+      color: #f0ebe0;
+      border: 1px solid #333;
+      padding: 18px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: background 0.15s;
+      font-family: var(--font-body);
+    }
+
+    .cal-btn.op { color: #d4ff00; }
+    .cal-btn:hover { background: #333; }
+
+    /* ── Auth Demo ── */
+    .auth-tabs {
+      display: flex;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .auth-tab {
+      flex: 1;
+      padding: 12px;
+      background: none;
+      border: none;
+      font-size: 14px;
+      cursor: pointer;
+      color: #666;
+      border-bottom: 2px solid transparent;
+      font-weight: 500;
+    }
+
+    .auth-tab.active { color: #080808; border-bottom-color: #d4ff00; }
+
+    .auth-screen { display: none; padding: 20px; }
+    .auth-screen.active { display: block; }
+
+    .auth-form-title { font-size: 1.2rem; font-weight: 700; color: #1a1f36; margin-bottom: 16px; }
+
+    .auth-input {
+      width: 100%;
+      padding: 9px 12px;
+      margin: 5px 0 10px;
+      font-size: 14px;
+      border: 1px solid #ddd;
+      border-radius: 0;
+      box-sizing: border-box;
+      display: block;
+    }
+
+    .auth-btn {
+      width: 100%;
+      padding: 10px;
+      font-size: 14px;
+      cursor: pointer;
+      background: #080808;
+      color: #d4ff00;
+      border: none;
+      border-radius: 0;
+      font-weight: 600;
+      margin-top: 4px;
+      letter-spacing: 0.08em;
+    }
+
+    .auth-btn:hover { background: #d4ff00; color: #080808; }
+
+    .auth-msg {
+      padding: 10px; border-radius: 0; font-size: 13px; margin-top: 10px; display: none;
+    }
+
+    .auth-msg.ok  { background: #f0fff4; color: #1a7a1a; border: 1px solid #c0f0c8; display: block; }
+    .auth-msg.err { background: #fff0f0; color: #c0392b; border: 1px solid #f0c0c0; display: block; }
+
+    .auth-success {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 220px;
+      padding: 24px;
+      text-align: center;
+      background: #fff;
+    }
+
+    .auth-success.active { display: flex; }
+    .auth-success h2 { color: #1a1f36; font-size: 1.2rem; margin-bottom: 12px; }
+    .auth-success p  { color: #555; font-size: 14px; margin-bottom: 18px; }
+
+    .auth-success .logout-btn {
+      padding: 9px 24px;
+      background: #ff3c00;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 600px) {
+      .learn-hero { flex-direction: column; gap: 1rem; }
+      .ys-prof-grid { grid-template-columns: repeat(2, 1fr); }
+      .ys-act-workspace { grid-template-columns: 1fr; }
+      .ys-events-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══ NAVBAR (same as index.html) ══ -->
+  <nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="index.html">Yangi's Streetwear</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon navbar-dark-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html#home">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html#products">Products</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html#business">Business</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html#contact">Contact Us</a></li>
+          <li class="nav-item"><a class="nav-link" href="janlang.html">Learn</a></li>
+          <li class="nav-item"><a class="nav-link" href="aboutme.html">About Me</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ══ PAGE ══ -->
+  <div class="learn-page">
+
+    <!-- ── HERO ── -->
+    <header class="learn-hero">
+      <div class="learn-seal-ring">
+        <img src="images/um.jpg" alt="UM Seal">
+      </div>
+      <div class="learn-hero-text">
+        <span class="learn-hero-kicker">— Learn / University of Manila</span>
+        <div class="learn-hero-title">Patria · Scientia<br>Virtus</div>
+        <p class="learn-hero-sub">Est. 1913 &nbsp;·&nbsp; Manila, Philippines</p>
+      </div>
+    </header>
+
+    <!-- ── TAB NAV ── -->
+    <div class="learn-tab-nav-wrapper">
+      <nav class="learn-tab-nav" id="mainNav">
+        <button class="learn-tab-btn active" data-tab="history">UM History</button>
+        <button class="learn-tab-btn" data-tab="mission">UM Mission</button>
+        <button class="learn-tab-btn" data-tab="vision">UM Vision</button>
+        <button class="learn-tab-btn" data-tab="motto">UM Motto</button>
+        <button class="learn-tab-btn" data-tab="cs">Computer Science</button>
+        <button class="learn-tab-btn" data-tab="professors">Professors</button>
+        <button class="learn-tab-btn" data-tab="os">Operating Systems</button>
+        <button class="learn-tab-btn" data-tab="activities">Programming Activities</button>
+      </nav>
+    </div>
+
+    <!-- ── CONTENT ── -->
+    <div class="learn-content">
+
+      <!-- HISTORY -->
+      <div class="learn-panel active" id="tab-history">
+        <div class="ys-card ys-card--warm">
+          <span class="ys-label">Founded 1913</span>
+          <div class="ys-h2">UM History</div>
+          <p class="ys-p">On October 5, 1913, a group of four young men and a woman, with ages from fifteen to twenty-one, met for breakfast at the Palma de Mallorca, a popular restaurant beside the Sto. Domingo Church in Intramuros, Manila. The five were Dr. Apolinario G. de los Santos, his brother Dr. Mariano V. de los Santos, his sister Maria de los Santos, and two friends Dr. Buenaventura J. Bello and Atty. Antonio Rivero.</p>
+          <p class="ys-p">These impecunious young people encountered many challenges in realizing their dream of establishing an institution whose motto was <span class="ys-accent">"Patria, Scientia, et Virtus."</span> They named their school <span class="ys-accent">Instituto de Manila</span>, and Apolinario de los Santos was elected as the first director.</p>
+        </div>
+
+        <div class="ys-hymn">
+          <span class="ys-hymn-title">🎵 &nbsp;The UM Hymn — U.M. Forever</span>
+          U.MI oh, U.M forever<br>
+          Alma mater, dear, we hail!<br>
+          We'll always wave your banner<br>
+          With the glorious U.M so dear<br>
+          As faithful sons, of dear U.M<br>
+          We will honor you forever,<br>
+          We'll cheer for you,<br>
+          Always love you<br>
+          Onward U.M ever hail!
+        </div>
+
+        <div class="ys-card">
+          <div class="ys-h3">Key Milestones</div>
+          <div class="ys-timeline">
+            <div class="ys-tl-item"><div class="ys-tl-year">1913</div><p class="ys-p">Instituto de Manila founded by five young visionaries in Intramuros.</p></div>
+            <div class="ys-tl-item"><div class="ys-tl-year">1919</div><p class="ys-p">College of Law formally opened; graduates top the Bar Examinations.</p></div>
+            <div class="ys-tl-item"><div class="ys-tl-year">1921</div><p class="ys-p">Re-incorporated as the <span class="ys-accent">University of Manila</span> on November 3 under Act No. 1459.</p></div>
+            <div class="ys-tl-item"><div class="ys-tl-year">1938</div><p class="ys-p">Emmanuel Pelaez, future Vice-President of the Philippines, tops the Bar Examinations.</p></div>
+            <div class="ys-tl-item"><div class="ys-tl-year">1939</div><p class="ys-p">Nazi Germany invaded Poland, marking the beginning of World War II.</p></div>
+            <div class="ys-tl-item"><div class="ys-tl-year">1941</div><p class="ys-p">Philippines joined World War II after the surprise attack in Pearl Harbor.</p></div>
+            <div class="ys-tl-item"><div class="ys-tl-year">1942</div><p class="ys-p">Empire of Japan took control of Manila; the University of Manila closed during occupation.</p></div>
+            <div class="ys-tl-item"><div class="ys-tl-year">1945</div><p class="ys-p">The University of Manila reopened after World War II, following the liberation of the Philippines by American forces.</p></div>
+            <div class="ys-tl-item"><div class="ys-tl-year">1959</div><p class="ys-p">Madame Helen de los Santos takes the presidency following Dr. Mariano's passing.</p></div>
+            <div class="ys-tl-item"><div class="ys-tl-year">1981</div><p class="ys-p">Dr. Virgilio de los Santos assumes presidency; receives Japan's Rising Sun Medal of Honor.</p></div>
+            <div class="ys-tl-item"><div class="ys-tl-year">1994</div><p class="ys-p">Four-year courses in Hotel & Restaurant Management and <span class="ys-accent">Computer Science</span> launched.</p></div>
+            <div class="ys-tl-item"><div class="ys-tl-year">2003</div><p class="ys-p">First university in the Philippines to offer a degree in the Japanese Language.</p></div>
+            <div class="ys-tl-item"><div class="ys-tl-year">2006</div><p class="ys-p">Dr. Emily Dodson De Leon elected President; becomes PACU's first Vice-President in 2007.</p></div>
+            <div class="ys-tl-item"><div class="ys-tl-year">2019</div><p class="ys-p">Total Lockdown in the Philippines; University of Manila adapts to the new normal of classes.</p></div>
+            <div class="ys-tl-item"><div class="ys-tl-year">2026</div><p class="ys-p">Atty. Dave De los Santos elected President.</p></div>
+          </div>
+        </div>
+
+        <div class="ys-map-card">
+          <div class="ys-map-header">
+            <span class="ys-label">📍 Campus Location</span>
+            <div class="ys-h3" style="margin-bottom:0.25rem;">University of Manila</div>
+            <p class="ys-map-address">546 Delos Santos St, 403, Manila, 1008 Metro Manila</p>
+          </div>
+          <iframe src="https://www.google.com/maps?q=546+Delos+Santos+St,+403,+Manila,+1008+Metro+Manila&z=17&output=embed" width="100%" height="340" style="border:0; display:block;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+      </div>
+
+      <!-- MISSION -->
+      <div class="learn-panel" id="tab-mission">
+        <div class="ys-card ys-card--warm">
+          <span class="ys-label">Our Purpose</span>
+          <div class="ys-h2">UM Mission</div>
+          <p class="ys-p"><span class="ys-accent">ACE</span> — to accomplish something with complete success.</p>
+        </div>
+        <div class="ys-ace-grid">
+          <div class="ys-ace-card">
+            <div class="ys-ace-letter">A</div>
+            <div class="ys-ace-h4">Anchor</div>
+            <p class="ys-p">Anchor in the hearts of the youth the love of country, science, and virtue.</p>
+          </div>
+          <div class="ys-ace-card">
+            <div class="ys-ace-letter">C</div>
+            <div class="ys-ace-h4">Create</div>
+            <p class="ys-p">Create an atmosphere of academic excellence and competence.</p>
+          </div>
+          <div class="ys-ace-card">
+            <div class="ys-ace-letter">E</div>
+            <div class="ys-ace-h4">Empower</div>
+            <p class="ys-p">Empower the youth with modern scientific and technological skills in braving the challenges of the global society.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- VISION -->
+      <div class="learn-panel" id="tab-vision">
+        <div class="ys-card ys-card--accent">
+          <span class="ys-label">Our Future</span>
+          <div class="ys-h2">UM Vision</div>
+        </div>
+        <div class="ys-hero-quote">
+          <div class="ys-blockquote">"To impart to future generations the University of Manila trilogy of ideals: love of country, love of science, and love of virtue, in making the lives of others better, brighter, lighter and more liveable by making quality education accessible to all."</div>
+          <hr class="ys-hr ys-hr--accent">
+          <div class="ys-trilogy">
+            <div class="ys-trilogy-item">
+              <div class="ys-trilogy-icon">🇵🇭</div>
+              <p class="ys-trilogy-label">Patria<br>Love of Country</p>
+            </div>
+            <div class="ys-trilogy-item">
+              <div class="ys-trilogy-icon">🔬</div>
+              <p class="ys-trilogy-label">Scientia<br>Love of Science</p>
+            </div>
+            <div class="ys-trilogy-item">
+              <div class="ys-trilogy-icon">⚖️</div>
+              <p class="ys-trilogy-label">Virtus<br>Love of Virtue</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MOTTO -->
+      <div class="learn-panel" id="tab-motto">
+        <div class="ys-card ys-card--accent">
+          <span class="ys-label">Our Motto</span>
+          <div class="ys-h2">UM Motto</div>
+        </div>
+        <div class="ys-hero-quote">
+          <div class="ys-blockquote" style="font-size:clamp(2rem,5vw,4rem);">"To acquire knowledge and skills for the benefit of mankind."</div>
+          <p class="ys-p" style="text-align:center;letter-spacing:0.2em;font-size:0.6rem;">Est. 1913 &nbsp;·&nbsp; University of Manila</p>
+        </div>
+      </div>
+
+      <!-- COMPUTER SCIENCE -->
+      <div class="learn-panel" id="tab-cs">
+        <div class="ys-card ys-card--warm">
+          <span class="ys-label">College of Computer Science</span>
+          <div class="ys-h2">Computer Science Dept.</div>
+          <p class="ys-p">Welcome to the College of Computer Science and Information Technology of The University of Manila. Faculty members maintain active programs of research and publication in computer vision, programming languages, machine learning, databases, modeling and simulation, and the theory of computation.</p>
+          <p class="ys-p">We offer academic programs leading to the degree of <span class="ys-accent">Bachelor of Science in Computer Science</span> and <span class="ys-accent">Associate in Computer Technology</span>.</p>
+        </div>
+        <div class="ys-card">
+          <div class="ys-h3">CS Mission</div>
+          <p class="ys-p">Provide quality undergraduate and graduate education in both the theoretical and applied foundations of computer science and train students to effectively apply this education to solve real-world problems, amplifying their potential for lifelong high-quality careers and giving them a competitive advantage in the ever-changing and challenging global work environment of the 21st century.</p>
+        </div>
+        <div class="ys-card ys-card--accent">
+          <div class="ys-h3">CS Vision</div>
+          <p class="ys-p">Build a strong research and teaching environment that responds swiftly to the challenges of the 21st century.</p>
+        </div>
+        <div class="ys-card">
+          <div class="ys-h3">General Objectives</div>
+          <p class="ys-p">To produce technological and scientifically empowered professionals, information technology and computer science experts whose breadth and depth of orientation, knowledge, and training are within global standards — committed to share their expertise with the various sectors of the academic community and the community at large, ever motivated by the UM trilogy of ideals.</p>
+          <hr class="ys-hr">
+          <div class="ys-h3">Specific Objectives</div>
+          <p class="ys-p">To equip students with the skills and competencies in information communications technology, its operation, language, and design. To prepare graduates with a solid foundation on the various languages, programs, and systems to enable them to perform with confidence the varied tasks expected of them in global organizations of the corporate world.</p>
+        </div>
+        <div class="ys-card">
+          <span class="ys-label">CS Department</span>
+          <div class="ys-h3">Events</div>
+          <p class="ys-p" style="margin-bottom:0.5rem;">Hover over each photo to reveal the event name.</p>
+          <div class="ys-events-grid">
+            <div class="ys-event-card">
+              <img src="images/acqu.png" alt="Acquaintance Party" onerror="this.style.background='#111'">
+              <span class="ys-event-label">🎉 Acquaintance Party</span>
+            </div>
+            <div class="ys-event-card">
+              <img src="images/field.jpg" alt="Laguna-Tagaytay Educational Tour" onerror="this.style.background='#111'">
+              <span class="ys-event-label">🚌 Laguna-Tagaytay Educational Tour</span>
+            </div>
+            <div class="ys-event-card">
+              <img src="images/sports.jpg" alt="Sportsfest 2026" onerror="this.style.background='#111'">
+              <span class="ys-event-label">🏆 Sportsfest 2026</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PROFESSORS -->
+      <div class="learn-panel" id="tab-professors">
+        <div class="ys-card ys-card--warm">
+          <span class="ys-label">Faculty</span>
+          <div class="ys-h2">CS Professors</div>
+        </div>
+        <div class="ys-prof-grid">
+          <div class="ys-prof-card">
+            <div class="ys-prof-avatar"><img src="images/mamborces.jpg" alt="Prof. Marjorie Borces" onerror="this.style.display='none'; this.parentElement.textContent='MB';"></div>
+            <div class="ys-prof-name">Prof. Marjorie Borces</div>
+            <div class="ys-prof-role">Adviser &amp; Professor</div>
+          </div>
+          <div class="ys-prof-card">
+            <div class="ys-prof-avatar"><img src="images/roch.jpg" alt="Prof. Rochelle Fallorina" onerror="this.style.display='none'; this.parentElement.textContent='RF';"></div>
+            <div class="ys-prof-name">Prof. Rochelle Fallorina</div>
+            <div class="ys-prof-role">Networking &amp; Hardware</div>
+          </div>
+          <div class="ys-prof-card">
+            <div class="ys-prof-avatar"><img src="images/plaza.jpg" alt="Prof. Rogelio Plaza" onerror="this.style.display='none'; this.parentElement.textContent='RP';"></div>
+            <div class="ys-prof-name">Prof. Rogelio Plaza</div>
+            <div class="ys-prof-role">Programming Professor</div>
+          </div>
+          <div class="ys-prof-card">
+            <div class="ys-prof-avatar"><img src="images/borces.jpg" alt="Prof. Joselito Borces" onerror="this.style.display='none'; this.parentElement.textContent='JB';"></div>
+            <div class="ys-prof-name">Prof. Joselito Borces</div>
+            <div class="ys-prof-role">Game &amp; Architecture</div>
+          </div>
+          <div class="ys-prof-card">
+            <div class="ys-prof-avatar"><img src="images/ervin.jpg" alt="Prof. Ervin Ramos" onerror="this.style.display='none'; this.parentElement.textContent='ER';"></div>
+            <div class="ys-prof-name">Prof. Ervin Ramos</div>
+            <div class="ys-prof-role">Software Development</div>
+          </div>
+          <div class="ys-prof-card">
+            <div class="ys-prof-avatar"><img src="images/stan.jpg" alt="Prof. Stanley P. Verde" onerror="this.style.display='none'; this.parentElement.textContent='SV';"></div>
+            <div class="ys-prof-name">Prof. Stanley P. Verde</div>
+            <div class="ys-prof-role">Data Science Professor</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- OPERATING SYSTEMS -->
+      <div class="learn-panel" id="tab-os">
+        <div class="ys-card ys-card--warm">
+          <span class="ys-label">Course Topics</span>
+          <div class="ys-h2">Operating Systems</div>
+        </div>
+        <div class="ys-os-grid">
+          <div class="ys-os-card">
+            <div class="ys-os-header">
+              <div class="ys-os-logo"><img src="https://static.vecteezy.com/system/resources/thumbnails/020/975/574/small/window-10-logo-window-10-icon-transparent-free-png.png" alt="Windows"></div>
+              <div>
+                <div class="ys-h3" style="margin-bottom:2px;font-size:1.2rem;">Windows</div>
+                <div class="ys-os-maker">Microsoft Corporation</div>
+              </div>
+            </div>
+            <div class="ys-os-body">
+              <p class="ys-p">Windows OS is a family of operating systems developed by Microsoft. It provides a graphical user interface (GUI) which allows users to interact with the computer using visual elements like windows, icons, and menus.</p>
+              <ul class="ys-version-list">
+                <li>Windows XP</li><li>Windows Vista</li><li>Windows 7</li>
+                <li>Windows 8 &amp; 8.1</li><li>Windows 10</li><li>Windows 11</li>
+              </ul>
+            </div>
+          </div>
+          <div class="ys-os-card">
+            <div class="ys-os-header">
+              <div class="ys-os-logo"><img src="images/mac.png" alt="macOS"></div>
+              <div>
+                <div class="ys-h3" style="margin-bottom:2px;font-size:1.2rem;">macOS</div>
+                <div class="ys-os-maker">Apple Inc.</div>
+              </div>
+            </div>
+            <div class="ys-os-body">
+              <p class="ys-p">macOS is the operating system developed by Apple Inc. for its line of Mac computers. Known for its sleek design, stability, and ease of use, macOS provides a graphical user interface that allows users to interact through windows, icons, and menus.</p>
+              <ul class="ys-version-list">
+                <li>Mac OS X 10.0–10.7</li><li>OS X 10.8–10.11</li><li>macOS 10.12–10.15</li>
+                <li>macOS 11 (Big Sur)</li><li>macOS 12 (Monterey)</li><li>macOS 13 (Ventura)</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="ys-os-grid" style="margin-top:1px;">
+          <div class="ys-os-card">
+            <div class="ys-os-header">
+              <div class="ys-os-logo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTJw7yIuraCY1v7LyKd4JaGmrrYBy6dSuJJQ&s" alt="Linux"></div>
+              <div>
+                <div class="ys-h3" style="margin-bottom:2px;font-size:1.2rem;">Linux</div>
+                <div class="ys-os-maker">Linus Torvalds</div>
+              </div>
+            </div>
+            <div class="ys-os-body">
+              <p class="ys-p">Linux is a free and open-source operating system. It acts as the bridge between your computer's hardware and the software you use. Unlike Windows or macOS, Linux is built on a kernel created by Linus Torvalds in 1991.</p>
+              <p class="ys-p">Linux doesn't come as just one version. Instead, it has many distributions (distros)—different versions with their own features, designs, and tools.</p>
+              <ul class="ys-version-list">
+                <li><strong>UBUNTU</strong> — 20.04, 22.04, 24.04</li>
+                <li><strong>DEBIAN</strong> — 10, 11, 12</li>
+                <li><strong>FEDORA</strong> — 38, 39, 40</li>
+                <li><strong>RED HAT ENTERPRISE LINUX</strong> — RHEL 7, 8, 9</li>
+                <li><strong>LINUX MINT</strong> — Mint 20, 21, 22</li>
+                <li><strong>ARCH LINUX</strong> — Rolling Release</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PROGRAMMING ACTIVITIES -->
+      <div class="learn-panel" id="tab-activities">
+        <div class="ys-card ys-card--warm">
+          <span class="ys-label">Student Work</span>
+          <div class="ys-h2">Programming Activities</div>
+          <p class="ys-p" style="margin-bottom:0;">Browse source code and interact with each activity's live demo below.</p>
+        </div>
+
+        <div class="ys-activity-nav" id="actNav" style="margin-top:1.5rem;">
+          <button class="ys-activity-pill active" data-act="helloworld">Hello World</button>
+          <button class="ys-activity-pill" data-act="alertwindow">Alert Window</button>
+          <button class="ys-activity-pill" data-act="namepop">Name Pop-up</button>
+          <button class="ys-activity-pill" data-act="namegreeting">Name Greeting</button>
+          <button class="ys-activity-pill" data-act="birthday">Birthday Greeter</button>
+          <button class="ys-activity-pill" data-act="alcohol">Alcohol Check</button>
+          <button class="ys-activity-pill" data-act="timer">Countdown Timer</button>
+          <button class="ys-activity-pill" data-act="add">Addition</button>
+          <button class="ys-activity-pill" data-act="sub">Subtraction</button>
+          <button class="ys-activity-pill" data-act="mul">Multiplication</button>
+          <button class="ys-activity-pill" data-act="div">Division</button>
+          <button class="ys-activity-pill" data-act="ifelse">If-Else Example</button>
+          <button class="ys-activity-pill" data-act="currentdate">Current Date</button>
+          <button class="ys-activity-pill" data-act="calculator">Calculator</button>
+          <button class="ys-activity-pill" data-act="loginreg">Login &amp; Register</button>
+        </div>
+
+        <!-- HELLO WORLD -->
+        <div class="ys-act-panel active" id="act-helloworld">
+          <div class="ys-act-meta"><span class="ys-act-title">Hello World</span><span class="ys-act-badge">HTML · JS</span></div>
+          <p class="ys-act-desc">Click the button to trigger an alert that displays "Hello, World!"</p>
+          <div class="ys-act-workspace">
+            <div class="ys-code-pane"><div class="ys-code-header"><div class="ys-traffic"><span class="tl-r"></span><span class="tl-y"></span><span class="tl-g"></span></div><span class="ys-file-label">HelloWorld.html</span></div>
+              <div class="ys-code-body"><pre><span class="tok-tag">&lt;style&gt;</span>
+  <span class="tok-prop">body</span> {
+    <span class="tok-prop">background</span>: <span class="tok-val">#070000</span>;
+    <span class="tok-prop">display</span>: <span class="tok-val">flex</span>;
+    <span class="tok-prop">justify-content</span>: <span class="tok-val">center</span>;
+    <span class="tok-prop">align-items</span>: <span class="tok-val">center</span>;
+    <span class="tok-prop">height</span>: <span class="tok-val">100vh</span>;
+  }
+<span class="tok-tag">&lt;/style&gt;</span>
+<span class="tok-tag">&lt;div</span> <span class="tok-attr">class</span>=<span class="tok-str">"HelloWorld"</span><span class="tok-tag">&gt;</span>
+  <span class="tok-tag">&lt;button</span> <span class="tok-attr">onclick</span>=<span class="tok-str">"alert('Hello, World!')"</span><span class="tok-tag">&gt;</span>
+    Click Me
+  <span class="tok-tag">&lt;/button&gt;</span>
+<span class="tok-tag">&lt;/div&gt;</span></pre></div></div>
+            <div class="ys-demo-pane"><div class="ys-demo-header"><div class="ys-demo-dot"></div><span>Live Demo</span></div>
+              <div class="demo-form"><div class="hw-wrap"><div class="hw-inner"><button class="df-btn" onclick="alert('Hello, World!')">Click Me</button></div></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ALERT WINDOW -->
+        <div class="ys-act-panel" id="act-alertwindow">
+          <div class="ys-act-meta"><span class="ys-act-title">Alert Window</span><span class="ys-act-badge">HTML · JS</span></div>
+          <p class="ys-act-desc">Triggers a browser alert dialog with a custom message.</p>
+          <div class="ys-act-workspace">
+            <div class="ys-code-pane"><div class="ys-code-header"><div class="ys-traffic"><span class="tl-r"></span><span class="tl-y"></span><span class="tl-g"></span></div><span class="ys-file-label">alertwindow.html</span></div>
+              <div class="ys-code-body"><pre><span class="tok-tag">&lt;button</span> <span class="tok-attr">onclick</span>=<span class="tok-str">"alert('This is an alert!')"</span><span class="tok-tag">&gt;</span>
+  Show Alert
+<span class="tok-tag">&lt;/button&gt;</span></pre></div></div>
+            <div class="ys-demo-pane"><div class="ys-demo-header"><div class="ys-demo-dot"></div><span>Live Demo</span></div>
+              <div class="demo-form"><div class="hw-wrap"><div class="hw-inner"><button class="df-btn" onclick="alert('This is an alert!')">Show Alert</button></div></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- NAME POP-UP -->
+        <div class="ys-act-panel" id="act-namepop">
+          <div class="ys-act-meta"><span class="ys-act-title">Name Pop-up</span><span class="ys-act-badge">HTML · JS</span></div>
+          <p class="ys-act-desc">Prompts the user for their name and displays it in an alert.</p>
+          <div class="ys-act-workspace">
+            <div class="ys-code-pane"><div class="ys-code-header"><div class="ys-traffic"><span class="tl-r"></span><span class="tl-y"></span><span class="tl-g"></span></div><span class="ys-file-label">namepop.html</span></div>
+              <div class="ys-code-body"><pre><span class="tok-kw">function</span> <span class="tok-fn">askName</span>() {
+  <span class="tok-kw">let</span> name <span class="tok-punct">=</span> <span class="tok-fn">prompt</span>(<span class="tok-str">"What is your name?"</span>);
+  <span class="tok-fn">alert</span>(<span class="tok-str">"Hello, "</span> <span class="tok-punct">+</span> name <span class="tok-punct">+</span> <span class="tok-str">"!"</span>);
+}</pre></div></div>
+            <div class="ys-demo-pane"><div class="ys-demo-header"><div class="ys-demo-dot"></div><span>Live Demo</span></div>
+              <div class="demo-form"><div class="hw-wrap"><div class="hw-inner"><button class="df-btn" onclick="let n=prompt('What is your name?'); if(n) alert('Hello, '+n+'!')">Ask Name</button></div></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- NAME GREETING -->
+        <div class="ys-act-panel" id="act-namegreeting">
+          <div class="ys-act-meta"><span class="ys-act-title">Name Greeting</span><span class="ys-act-badge">HTML · JS</span></div>
+          <p class="ys-act-desc">Type your name in the input field and click greet to see a personalized hello message.</p>
+          <div class="ys-act-workspace">
+            <div class="ys-code-pane"><div class="ys-code-header"><div class="ys-traffic"><span class="tl-r"></span><span class="tl-y"></span><span class="tl-g"></span></div><span class="ys-file-label">greeting.html</span></div>
+              <div class="ys-code-body"><pre><span class="tok-kw">function</span> <span class="tok-fn">greet</span>() {
+  <span class="tok-kw">let</span> name <span class="tok-punct">=</span> document
+    .<span class="tok-fn">getElementById</span>(<span class="tok-str">"nameInput"</span>).value;
+  document.<span class="tok-fn">getElementById</span>(<span class="tok-str">"greeting"</span>)
+    .textContent <span class="tok-punct">=</span> <span class="tok-str">"Hello, "</span> <span class="tok-punct">+</span> name <span class="tok-punct">+</span> <span class="tok-str">"!"</span>;
+}</pre></div></div>
+            <div class="ys-demo-pane"><div class="ys-demo-header"><div class="ys-demo-dot"></div><span>Live Demo</span></div>
+              <div class="demo-form">
+                <label>Your name:</label>
+                <input type="text" id="ng-name" placeholder="Enter name">
+                <button class="df-btn" onclick="document.getElementById('ng-result').textContent='Hello, '+(document.getElementById('ng-name').value||'stranger')+'!'; document.getElementById('ng-result').className='result-box ok'">Greet</button>
+                <div class="result-box" id="ng-result"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- BIRTHDAY GREETER -->
+        <div class="ys-act-panel" id="act-birthday">
+          <div class="ys-act-meta"><span class="ys-act-title">Birthday Greeter</span><span class="ys-act-badge">HTML · JS</span></div>
+          <p class="ys-act-desc">Enter a name and get a birthday greeting message.</p>
+          <div class="ys-act-workspace">
+            <div class="ys-code-pane"><div class="ys-code-header"><div class="ys-traffic"><span class="tl-r"></span><span class="tl-y"></span><span class="tl-g"></span></div><span class="ys-file-label">birthday.html</span></div>
+              <div class="ys-code-body"><pre><span class="tok-kw">function</span> <span class="tok-fn">birthdayGreet</span>() {
+  <span class="tok-kw">let</span> n <span class="tok-punct">=</span> document
+    .<span class="tok-fn">getElementById</span>(<span class="tok-str">"bday-name"</span>).value
+    <span class="tok-punct">||</span> <span class="tok-str">'Friend'</span>;
+  <span class="tok-fn">alert</span>(<span class="tok-str">'🎂 Happy Birthday '</span> <span class="tok-punct">+</span> n <span class="tok-punct">+</span> <span class="tok-str">'!'</span>);
+}</pre></div></div>
+            <div class="ys-demo-pane"><div class="ys-demo-header"><div class="ys-demo-dot"></div><span>Live Demo</span></div>
+              <div class="demo-form">
+                <label>Name:</label>
+                <input type="text" id="bday-name" placeholder="Friend">
+                <button class="df-btn" onclick="birthdayGreet()">Greet</button>
+                <div class="result-box" id="bday-result" style="display:none;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ALCOHOL CHECK -->
+        <div class="ys-act-panel" id="act-alcohol">
+          <div class="ys-act-meta"><span class="ys-act-title">Alcohol Check</span><span class="ys-act-badge">HTML · JS · Conditionals</span></div>
+          <p class="ys-act-desc">Enter your age to check if you are eligible to purchase alcohol (18+).</p>
+          <div class="ys-act-workspace">
+            <div class="ys-code-pane"><div class="ys-code-header"><div class="ys-traffic"><span class="tl-r"></span><span class="tl-y"></span><span class="tl-g"></span></div><span class="ys-file-label">alcohol.html</span></div>
+              <div class="ys-code-body"><pre><span class="tok-kw">function</span> <span class="tok-fn">check</span>() {
+  <span class="tok-kw">let</span> age <span class="tok-punct">=</span> <span class="tok-fn">Number</span>(input.value);
+  <span class="tok-kw">if</span> (age <span class="tok-punct">&gt;=</span> <span class="tok-num">18</span>) {
+    result <span class="tok-punct">=</span> <span class="tok-str">'✓ Eligible'</span>;
+  } <span class="tok-kw">else</span> {
+    result <span class="tok-punct">=</span> <span class="tok-str">'✗ Not Eligible'</span>;
+  }
+}</pre></div></div>
+            <div class="ys-demo-pane"><div class="ys-demo-header"><div class="ys-demo-dot"></div><span>Live Demo</span></div>
+              <div class="demo-form">
+                <label>Age:</label>
+                <input type="number" id="alc-age" placeholder="Enter age">
+                <button class="df-btn" onclick="alcoholCheck()">Check</button>
+                <div class="result-box" id="alc-result"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- COUNTDOWN TIMER -->
+        <div class="ys-act-panel" id="act-timer">
+          <div class="ys-act-meta"><span class="ys-act-title">Countdown Timer</span><span class="ys-act-badge">HTML · JS · setInterval</span></div>
+          <p class="ys-act-desc">A 60-second countdown timer using setInterval. Counts down and alerts when time's up.</p>
+          <div class="ys-act-workspace">
+            <div class="ys-code-pane"><div class="ys-code-header"><div class="ys-traffic"><span class="tl-r"></span><span class="tl-y"></span><span class="tl-g"></span></div><span class="ys-file-label">timer.html</span></div>
+              <div class="ys-code-body"><pre><span class="tok-kw">let</span> timeLeft <span class="tok-punct">=</span> <span class="tok-num">60</span>, timerId;
+<span class="tok-kw">function</span> <span class="tok-fn">start</span>() {
+  timerId <span class="tok-punct">=</span> <span class="tok-fn">setInterval</span>(() <span class="tok-punct">=&gt;</span> {
+    <span class="tok-kw">if</span> (timeLeft <span class="tok-punct">&lt;=</span> <span class="tok-num">0</span>) {
+      <span class="tok-fn">clearInterval</span>(timerId);
+      <span class="tok-fn">alert</span>(<span class="tok-str">"Time's up!"</span>);
+    } <span class="tok-kw">else</span> {
+      document.<span class="tok-fn">getElementById</span>(<span class="tok-str">"timer"</span>)
+        .value <span class="tok-punct">=</span> timeLeft;
+      timeLeft<span class="tok-punct">--</span>;
+    }
+  }, <span class="tok-num">1000</span>);
+}</pre></div></div>
+            <div class="ys-demo-pane"><div class="ys-demo-header"><div class="ys-demo-dot"></div><span>Live Demo</span></div>
+              <div class="demo-form">
+                <div class="timer-display" id="timer-display">60</div>
+                <button class="df-btn" id="timer-btn" onclick="timerStart()">▶ Start Timer</button>
+                <button class="df-btn df-btn-sec" onclick="timerReset()" style="margin-top:8px">↺ Reset</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ADDITION -->
+        <div class="ys-act-panel" id="act-add">
+          <div class="ys-act-meta"><span class="ys-act-title">Addition</span><span class="ys-act-badge">HTML · JS · Math</span></div>
+          <p class="ys-act-desc">Enter two numbers and calculate their sum.</p>
+          <div class="ys-act-workspace">
+            <div class="ys-code-pane"><div class="ys-code-header"><div class="ys-traffic"><span class="tl-r"></span><span class="tl-y"></span><span class="tl-g"></span></div><span class="ys-file-label">addition.html</span></div>
+              <div class="ys-code-body"><pre><span class="tok-kw">function</span> <span class="tok-fn">add</span>() {
+  <span class="tok-kw">let</span> n1 <span class="tok-punct">=</span> <span class="tok-fn">Number</span>(a.value);
+  <span class="tok-kw">let</span> n2 <span class="tok-punct">=</span> <span class="tok-fn">Number</span>(b.value);
+  result.textContent <span class="tok-punct">=</span> n1 <span class="tok-punct">+</span> n2;
+}</pre></div></div>
+            <div class="ys-demo-pane"><div class="ys-demo-header"><div class="ys-demo-dot"></div><span>Live Demo</span></div>
+              <div class="demo-form">
+                <label>Number 1:</label><input type="number" id="add-n1" placeholder="0">
+                <label>Number 2:</label><input type="number" id="add-n2" placeholder="0">
+                <button class="df-btn" onclick="addCalc()">Calculate</button>
+                <div class="result-box" id="add-result"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SUBTRACTION -->
+        <div class="ys-act-panel" id="act-sub">
+          <div class="ys-act-meta"><span class="ys-act-title">Subtraction</span><span class="ys-act-badge">HTML · JS · Math</span></div>
+          <p class="ys-act-desc">Enter two numbers and calculate their difference.</p>
+          <div class="ys-act-workspace">
+            <div class="ys-code-pane"><div class="ys-code-header"><div class="ys-traffic"><span class="tl-r"></span><span class="tl-y"></span><span class="tl-g"></span></div><span class="ys-file-label">subtraction.html</span></div>
+              <div class="ys-code-body"><pre><span class="tok-kw">function</span> <span class="tok-fn">sub</span>() {
+  <span class="tok-kw">let</span> n1 <span class="tok-punct">=</span> <span class="tok-fn">Number</span>(a.value);
+  <span class="tok-kw">let</span> n2 <span class="tok-punct">=</span> <span class="tok-fn">Number</span>(b.value);
+  result.textContent <span class="tok-punct">=</span> n1 <span class="tok-punct">-</span> n2;
+}</pre></div></div>
+            <div class="ys-demo-pane"><div class="ys-demo-header"><div class="ys-demo-dot"></div><span>Live Demo</span></div>
+              <div class="demo-form">
+                <label>Number 1:</label><input type="number" id="sub-n1" placeholder="0">
+                <label>Number 2:</label><input type="number" id="sub-n2" placeholder="0">
+                <button class="df-btn" onclick="subCalc()">Calculate</button>
+                <div class="result-box" id="sub-result"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- MULTIPLICATION -->
+        <div class="ys-act-panel" id="act-mul">
+          <div class="ys-act-meta"><span class="ys-act-title">Multiplication</span><span class="ys-act-badge">HTML · JS · Math</span></div>
+          <p class="ys-act-desc">Enter two numbers and calculate their product.</p>
+          <div class="ys-act-workspace">
+            <div class="ys-code-pane"><div class="ys-code-header"><div class="ys-traffic"><span class="tl-r"></span><span class="tl-y"></span><span class="tl-g"></span></div><span class="ys-file-label">multiplication.html</span></div>
+              <div class="ys-code-body"><pre><span class="tok-kw">function</span> <span class="tok-fn">mul</span>() {
+  <span class="tok-kw">let</span> n1 <span class="tok-punct">=</span> <span class="tok-fn">Number</span>(a.value);
+  <span class="tok-kw">let</span> n2 <span class="tok-punct">=</span> <span class="tok-fn">Number</span>(b.value);
+  result.textContent <span class="tok-punct">=</span> n1 <span class="tok-punct">*</span> n2;
+}</pre></div></div>
+            <div class="ys-demo-pane"><div class="ys-demo-header"><div class="ys-demo-dot"></div><span>Live Demo</span></div>
+              <div class="demo-form">
+                <label>Number 1:</label><input type="number" id="mul-n1" placeholder="0">
+                <label>Number 2:</label><input type="number" id="mul-n2" placeholder="0">
+                <button class="df-btn" onclick="mulCalc()">Calculate</button>
+                <div class="result-box" id="mul-result"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- DIVISION -->
+        <div class="ys-act-panel" id="act-div">
+          <div class="ys-act-meta"><span class="ys-act-title">Division</span><span class="ys-act-badge">HTML · JS · Math</span></div>
+          <p class="ys-act-desc">Enter two numbers and calculate their quotient. Handles division by zero.</p>
+          <div class="ys-act-workspace">
+            <div class="ys-code-pane"><div class="ys-code-header"><div class="ys-traffic"><span class="tl-r"></span><span class="tl-y"></span><span class="tl-g"></span></div><span class="ys-file-label">division.html</span></div>
+              <div class="ys-code-body"><pre><span class="tok-kw">function</span> <span class="tok-fn">div</span>() {
+  <span class="tok-kw">if</span> (n2 <span class="tok-punct">===</span> <span class="tok-num">0</span>) {
+    <span class="tok-fn">alert</span>(<span class="tok-str">'Cannot divide by zero'</span>);
+    <span class="tok-kw">return</span>;
+  }
+  result.textContent <span class="tok-punct">=</span> n1 <span class="tok-punct">/</span> n2;
+}</pre></div></div>
+            <div class="ys-demo-pane"><div class="ys-demo-header"><div class="ys-demo-dot"></div><span>Live Demo</span></div>
+              <div class="demo-form">
+                <label>Number 1:</label><input type="number" id="div-n1" placeholder="0">
+                <label>Number 2:</label><input type="number" id="div-n2" placeholder="0">
+                <button class="df-btn" onclick="divCalc()">Calculate</button>
+                <div class="result-box" id="div-result"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- IF-ELSE -->
+        <div class="ys-act-panel" id="act-ifelse">
+          <div class="ys-act-meta"><span class="ys-act-title">If-Else Example</span><span class="ys-act-badge">HTML · JS · Conditionals</span></div>
+          <p class="ys-act-desc">Enter a name and click RUN. If the name is "Joshua" it shows a special welcome; otherwise a generic greeting.</p>
+          <div class="ys-act-workspace">
+            <div class="ys-code-pane"><div class="ys-code-header"><div class="ys-traffic"><span class="tl-r"></span><span class="tl-y"></span><span class="tl-g"></span></div><span class="ys-file-label">Ifelse.html</span></div>
+              <div class="ys-code-body"><pre><span class="tok-kw">function</span> <span class="tok-fn">RUN</span>() {
+  <span class="tok-kw">let</span> name <span class="tok-punct">=</span> document
+    .<span class="tok-fn">getElementById</span>(<span class="tok-str">"name"</span>).value;
+  <span class="tok-kw">if</span> (name <span class="tok-punct">===</span> <span class="tok-str">"Joshua"</span>) {
+    <span class="tok-fn">alert</span>(<span class="tok-str">"Hello Joshua! Welcome back!"</span>);
+  } <span class="tok-kw">else</span> {
+    <span class="tok-fn">alert</span>(<span class="tok-str">"Hello "</span> <span class="tok-punct">+</span> name <span class="tok-punct">+</span>
+      <span class="tok-str">"! Nice to meet you!"</span>);
+  }
+}</pre></div></div>
+            <div class="ys-demo-pane"><div class="ys-demo-header"><div class="ys-demo-dot"></div><span>Live Demo</span></div>
+              <div class="demo-form">
+                <label>Enter a name (try "Joshua"):</label>
+                <input type="text" id="ie-name" placeholder="Name">
+                <button class="df-btn" onclick="ifelseRun()">RUN</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CURRENT DATE -->
+        <div class="ys-act-panel" id="act-currentdate">
+          <div class="ys-act-meta"><span class="ys-act-title">Current Date</span><span class="ys-act-badge">HTML · JS · Date</span></div>
+          <p class="ys-act-desc">Click the button to display today's date using JavaScript's built-in <code style="background:rgba(212,255,0,0.1);padding:1px 6px;font-family:monospace;font-size:0.75rem;">Date</code> object.</p>
+          <div class="ys-act-workspace">
+            <div class="ys-code-pane"><div class="ys-code-header"><div class="ys-traffic"><span class="tl-r"></span><span class="tl-y"></span><span class="tl-g"></span></div><span class="ys-file-label">currentdate.html</span></div>
+              <div class="ys-code-body"><pre><span class="tok-kw">function</span> <span class="tok-fn">showDate</span>() {
+  <span class="tok-kw">let</span> currentDate <span class="tok-punct">=</span> <span class="tok-kw">new</span> <span class="tok-fn">Date</span>();
+  <span class="tok-fn">alert</span>(<span class="tok-str">"Today is: "</span>
+    <span class="tok-punct">+</span> currentDate.<span class="tok-fn">toDateString</span>());
+}</pre></div></div>
+            <div class="ys-demo-pane"><div class="ys-demo-header"><div class="ys-demo-dot"></div><span>Live Demo</span></div>
+              <div class="demo-form"><div class="hw-wrap"><div class="hw-inner"><button class="df-btn" onclick="cdShowDate()">Show Current Date</button></div></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CALCULATOR -->
+        <div class="ys-act-panel" id="act-calculator">
+          <div class="ys-act-meta"><span class="ys-act-title">Calculator</span><span class="ys-act-badge">HTML · CSS · JS</span></div>
+          <p class="ys-act-desc">A full calculator with +, −, ×, ÷ operations. Uses eval() with Infinity and error guards.</p>
+          <div class="ys-act-workspace">
+            <div class="ys-code-pane"><div class="ys-code-header"><div class="ys-traffic"><span class="tl-r"></span><span class="tl-y"></span><span class="tl-g"></span></div><span class="ys-file-label">cal.js</span></div>
+              <div class="ys-code-body"><pre><span class="tok-kw">function</span> <span class="tok-fn">calculate</span>() {
+  <span class="tok-kw">try</span> {
+    <span class="tok-kw">let</span> result <span class="tok-punct">=</span> <span class="tok-fn">eval</span>(expression);
+    display.value <span class="tok-punct">=</span> result;
+    expression <span class="tok-punct">=</span> result.<span class="tok-fn">toString</span>();
+  } <span class="tok-kw">catch</span> (e) {
+    display.value <span class="tok-punct">=</span> <span class="tok-str">'Error'</span>;
+    expression <span class="tok-punct">=</span> <span class="tok-str">''</span>;
+  }
+}</pre></div></div>
+            <div class="ys-demo-pane"><div class="ys-demo-header"><div class="ys-demo-dot"></div><span>Live Demo</span></div>
+              <div class="cal-demo">
+                <div class="cal-wrap">
+                  <input class="cal-display" id="cal-display" readonly placeholder="0">
+                  <div class="cal-keys">
+                    <button class="cal-btn op" onclick="calAppend('+')">+</button>
+                    <button class="cal-btn" onclick="calAppend('7')">7</button>
+                    <button class="cal-btn" onclick="calAppend('8')">8</button>
+                    <button class="cal-btn" onclick="calAppend('9')">9</button>
+                    <button class="cal-btn op" onclick="calAppend('-')">−</button>
+                    <button class="cal-btn" onclick="calAppend('4')">4</button>
+                    <button class="cal-btn" onclick="calAppend('5')">5</button>
+                    <button class="cal-btn" onclick="calAppend('6')">6</button>
+                    <button class="cal-btn op" onclick="calAppend('*')">×</button>
+                    <button class="cal-btn" onclick="calAppend('1')">1</button>
+                    <button class="cal-btn" onclick="calAppend('2')">2</button>
+                    <button class="cal-btn" onclick="calAppend('3')">3</button>
+                    <button class="cal-btn op" onclick="calAppend('/')">/</button>
+                    <button class="cal-btn" onclick="calAppend('0')">0</button>
+                    <button class="cal-btn" onclick="calAppend('.')">.</button>
+                    <button class="cal-btn" onclick="calCalculate()" style="background:#d4ff00;color:#080808;font-weight:700;">=</button>
+                    <button class="cal-btn op" onclick="calClear()">C</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- LOGIN & REGISTER -->
+        <div class="ys-act-panel" id="act-loginreg">
+          <div class="ys-act-meta"><span class="ys-act-title">Login &amp; Register</span><span class="ys-act-badge">HTML · JS · In-Memory Auth</span></div>
+          <p class="ys-act-desc">A full authentication flow using in-memory storage. Register a new account, then log in with your credentials.</p>
+          <div class="ys-act-workspace">
+            <div class="ys-code-pane"><div class="ys-code-header"><div class="ys-traffic"><span class="tl-r"></span><span class="tl-y"></span><span class="tl-g"></span></div><span class="ys-file-label">register.html / login.html</span></div>
+              <div class="ys-code-body"><pre><span class="tok-kw">function</span> <span class="tok-fn">register</span>() {
+  <span class="tok-kw">if</span> (pass <span class="tok-punct">!==</span> conf) {
+    <span class="tok-fn">alert</span>(<span class="tok-str">'Passwords do not match'</span>);
+    <span class="tok-kw">return</span>;
+  }
+  users[user] <span class="tok-punct">=</span> { name, user, pass };
+  <span class="tok-fn">alert</span>(<span class="tok-str">'Registration successful'</span>);
+}
+<span class="tok-kw">function</span> <span class="tok-fn">login</span>() {
+  <span class="tok-kw">if</span> (users[user]?.pass <span class="tok-punct">===</span> pass) {
+    <span class="tok-fn">showSuccess</span>(users[user].name);
+  }
+}</pre></div></div>
+            <div class="ys-demo-pane"><div class="ys-demo-header"><div class="ys-demo-dot"></div><span>Live Demo</span></div>
+              <div style="background:#fff;min-height:280px;">
+                <div class="auth-tabs">
+                  <button class="auth-tab active" onclick="authSwitchTab('register',this)">Register</button>
+                  <button class="auth-tab" onclick="authSwitchTab('login',this)">Login</button>
+                </div>
+                <div class="auth-screen active" id="auth-register">
+                  <div class="auth-form-title">Create Account</div>
+                  <input class="auth-input" id="reg-name" placeholder="Full Name">
+                  <input class="auth-input" id="reg-user" placeholder="Username">
+                  <input class="auth-input" type="password" id="reg-pass" placeholder="Password">
+                  <input class="auth-input" type="password" id="reg-conf" placeholder="Confirm Password">
+                  <button class="auth-btn" onclick="authRegister()">Register</button>
+                  <div class="auth-msg" id="reg-msg"></div>
+                </div>
+                <div class="auth-screen" id="auth-login">
+                  <div class="auth-form-title">Login</div>
+                  <input class="auth-input" id="log-user" placeholder="Username">
+                  <input class="auth-input" type="password" id="log-pass" placeholder="Password">
+                  <button class="auth-btn" onclick="authLogin()">Login</button>
+                  <div class="auth-msg" id="log-msg"></div>
+                </div>
+                <div class="auth-success" id="auth-success">
+                  <div style="font-size:2.5rem;margin-bottom:10px">✅</div>
+                  <h2 id="auth-success-name">Hello, Login Successful!</h2>
+                  <p>You are now logged in.</p>
+                  <button class="logout-btn" onclick="authLogout()">Logout</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- end activities panel -->
+      
+
+    </div><!-- end .learn-content -->
+  </div><!-- end .learn-page -->
+
+  <!-- ══ FOOTER (same as index.html) ══ -->
+  <footer class="footer">
+    <br><a class="navbar-brand" style="color: black; font-size: 20px;">Yangi's Streetwear</a>
+    <p class="navbar-brand" style="color: black; font-size: 15px">E.Mejia St, Bagong Ilog, Pasig City, 1001 Metro Manila</p>
+    <p class="navbar-brand" style="color: black; font-size: 15px">+639-074424193</p>
+    <p class="navbar-brand" style="color: black; font-size: 15px">francis.ventura@yangistreet.com</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <script>
+    /* ── MAIN TAB SWITCHER ── */
+    document.getElementById('mainNav').addEventListener('click', function(e) {
+      var b = e.target.closest('.learn-tab-btn');
+      if (!b) return;
+      document.querySelectorAll('.learn-tab-btn').forEach(function(x){ x.classList.remove('active'); });
+      document.querySelectorAll('.learn-panel').forEach(function(x){ x.classList.remove('active'); });
+      b.classList.add('active');
+      document.getElementById('tab-' + b.dataset.tab).classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    /* ── ACTIVITY PILL SWITCHER ── */
+    document.getElementById('actNav').addEventListener('click', function(e) {
+      var p = e.target.closest('.ys-activity-pill');
+      if (!p) return;
+      document.querySelectorAll('.ys-activity-pill').forEach(function(x){ x.classList.remove('active'); });
+      document.querySelectorAll('.ys-act-panel').forEach(function(x){ x.classList.remove('active'); });
+      p.classList.add('active');
+      document.getElementById('act-' + p.dataset.act).classList.add('active');
+    });
+
+    /* ── MATH DEMOS ── */
+    function addCalc() {
+      var n1 = Number(document.getElementById('add-n1').value);
+      var n2 = Number(document.getElementById('add-n2').value);
+      var el = document.getElementById('add-result');
+      el.textContent = n1 + ' + ' + n2 + ' = ' + (n1 + n2);
+      el.className = 'result-box ok';
+    }
+    function subCalc() {
+      var n1 = Number(document.getElementById('sub-n1').value);
+      var n2 = Number(document.getElementById('sub-n2').value);
+      var el = document.getElementById('sub-result');
+      el.textContent = n1 + ' − ' + n2 + ' = ' + (n1 - n2);
+      el.className = 'result-box ok';
+    }
+    function mulCalc() {
+      var n1 = Number(document.getElementById('mul-n1').value);
+      var n2 = Number(document.getElementById('mul-n2').value);
+      var el = document.getElementById('mul-result');
+      el.textContent = n1 + ' × ' + n2 + ' = ' + (n1 * n2);
+      el.className = 'result-box ok';
+    }
+    function divCalc() {
+      var n1 = Number(document.getElementById('div-n1').value);
+      var n2 = Number(document.getElementById('div-n2').value);
+      var el = document.getElementById('div-result');
+      if (n2 === 0) { el.textContent = 'Error: Cannot divide by zero'; el.className = 'result-box err'; return; }
+      el.textContent = n1 + ' ÷ ' + n2 + ' = ' + (n1 / n2);
+      el.className = 'result-box ok';
+    }
+    function alcoholCheck() {
+      var a = Number(document.getElementById('alc-age').value);
+      var el = document.getElementById('alc-result');
+      if (!a && a !== 0) { el.textContent = 'Please enter a valid age.'; el.className = 'result-box err'; return; }
+      if (a >= 18) { el.textContent = '✓ You are eligible to purchase alcohol.'; el.className = 'result-box ok'; }
+      else { el.textContent = '✗ You are NOT eligible to purchase alcohol.'; el.className = 'result-box err'; }
+    }
+    function birthdayGreet() {
+      var n = document.getElementById('bday-name').value || 'Friend';
+      var el = document.getElementById('bday-result');
+      el.textContent = '🎂 Happy Birthday ' + n + '! Wishing you a wonderful year ahead.';
+      el.style.display = 'flex';
+      el.className = 'result-box ok';
+    }
+    function ifelseRun() {
+      var name = document.getElementById('ie-name').value;
+      if (name === 'Joshua') {
+        alert('Hello Joshua! Welcome back!');
+      } else {
+        alert('Hello ' + name + '! Nice to meet you!');
+      }
+    }
+    function cdShowDate() {
+      var currentDate = new Date();
+      alert('Today is: ' + currentDate.toDateString());
+    }
+
+    /* ── TIMER ── */
+    var timerLeft = 60, timerId = null, timerRunning = false;
+    function timerStart() {
+      if (timerRunning) return;
+      timerRunning = true;
+      var btn = document.getElementById('timer-btn');
+      btn.disabled = true; btn.textContent = '⏱ Running...';
+      timerId = setInterval(function() {
+        if (timerLeft <= 0) {
+          clearInterval(timerId); timerRunning = false;
+          document.getElementById('timer-display').textContent = '0';
+          document.getElementById('timer-display').className = 'timer-display';
+          btn.disabled = false; btn.textContent = '▶ Start Timer';
+          alert("Time's up!"); return;
+        }
+        timerLeft--;
+        document.getElementById('timer-display').textContent = timerLeft;
+        document.getElementById('timer-display').className = 'timer-display running';
+      }, 1000);
+    }
+    function timerReset() {
+      clearInterval(timerId); timerRunning = false; timerLeft = 60;
+      document.getElementById('timer-display').textContent = '60';
+      document.getElementById('timer-display').className = 'timer-display';
+      var btn = document.getElementById('timer-btn');
+      btn.disabled = false; btn.textContent = '▶ Start Timer';
+    }
+
+    /* ── CALCULATOR ── */
+    var calExpr = '';
+    function calAppend(v) {
+      var d = document.getElementById('cal-display');
+      if ('0123456789.'.includes(v)) { d.value += v; }
+      calExpr += v;
+      if ('+-*/'.includes(v)) { d.value = ''; }
+    }
+    function calClear() { document.getElementById('cal-display').value = ''; calExpr = ''; }
+    function calCalculate() {
+      var d = document.getElementById('cal-display');
+      try { var r = eval(calExpr); d.value = r; calExpr = r.toString(); }
+      catch(e) { d.value = 'Error'; calExpr = ''; }
+      if (d.value === 'Infinity' || d.value === '-Infinity') { d.value = 'Error'; calExpr = ''; }
+    }
+
+    /* ── AUTH (in-memory) ── */
+    var authUsers = {}, authLoggedInUser = null;
+    function authSwitchTab(tab, btn) {
+      document.querySelectorAll('.auth-tab').forEach(function(x){ x.classList.remove('active'); });
+      document.querySelectorAll('.auth-screen').forEach(function(x){ x.classList.remove('active'); });
+      btn.classList.add('active');
+      document.getElementById('auth-' + tab).classList.add('active');
+      document.getElementById('auth-success').classList.remove('active');
+      document.getElementById('reg-msg').className = 'auth-msg';
+      document.getElementById('log-msg').className = 'auth-msg';
+    }
+    function authRegister() {
+      var name = document.getElementById('reg-name').value.trim();
+      var user = document.getElementById('reg-user').value.trim();
+      var pass = document.getElementById('reg-pass').value;
+      var conf = document.getElementById('reg-conf').value;
+      var msg  = document.getElementById('reg-msg');
+      if (!name || !user || !pass) { msg.textContent = 'Please fill in all fields.'; msg.className = 'auth-msg err'; return; }
+      if (pass !== conf) { msg.textContent = 'Passwords do not match.'; msg.className = 'auth-msg err'; return; }
+      authUsers[user] = { name: name, username: user, password: pass };
+      msg.textContent = 'Registration successful! You can now log in.';
+      msg.className = 'auth-msg ok';
+      document.getElementById('reg-name').value = '';
+      document.getElementById('reg-user').value = '';
+      document.getElementById('reg-pass').value = '';
+      document.getElementById('reg-conf').value = '';
+    }
+    function authLogin() {
+      var user = document.getElementById('log-user').value.trim();
+      var pass = document.getElementById('log-pass').value;
+      var msg  = document.getElementById('log-msg');
+      if (!user || !pass) { msg.textContent = 'Please enter username and password.'; msg.className = 'auth-msg err'; return; }
+      if (!authUsers[user]) { msg.textContent = 'User not found. Please register first.'; msg.className = 'auth-msg err'; return; }
+      if (authUsers[user].password !== pass) { msg.textContent = 'Incorrect password.'; msg.className = 'auth-msg err'; return; }
+      authLoggedInUser = authUsers[user];
+      document.querySelectorAll('.auth-tab').forEach(function(x){ x.classList.remove('active'); });
+      document.querySelectorAll('.auth-screen').forEach(function(x){ x.classList.remove('active'); });
+      document.getElementById('auth-success-name').textContent = 'Hello, ' + authLoggedInUser.name + '! Login Successful.';
+      document.getElementById('auth-success').classList.add('active');
+    }
+    function authLogout() {
+      authLoggedInUser = null;
+      document.getElementById('auth-success').classList.remove('active');
+      document.querySelectorAll('.auth-tab').forEach(function(x){ x.classList.remove('active'); });
+      document.querySelectorAll('.auth-screen').forEach(function(x){ x.classList.remove('active'); });
+      document.querySelector('.auth-tab').classList.add('active');
+      document.getElementById('auth-register').classList.add('active');
+      document.getElementById('log-user').value = '';
+      document.getElementById('log-pass').value = '';
+    }
+  </script>
+</body>
+</html>
